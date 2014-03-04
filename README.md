@@ -14,3 +14,4 @@ Problems
 - Problem 31: Coin sums [Completed]
 - Problem 32: Pandigital products [Completed]
 - Problem 33: Digit canceling fractions [In progress]
+- Problem 39: Integer right triangles [Completed]
