@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <chrono>
 #include "../esieve.h"
 
 void perm(int& p, int check = 1)
@@ -29,6 +30,7 @@ void perm(int& p, int check = 1)
 
 int main()
 {
+    auto start = chrono::high_resolution_clock::now();
     int max = 1000000;
     vector<int> primelist;
     eSieve(primelist, max);
@@ -61,5 +63,7 @@ int main()
         }
     }
     cout << "there are "<< count << " circular primes" << endl;
+    auto end = chrono::high_resolution_clock::now();
+    cout << "time: " << chrono::duration_cast<chrono::milliseconds>(end-start).count() << " ms" << endl;
     return 0;
 }
