@@ -21,7 +21,7 @@ void eSieve(vector<int>& primelist, int upperLimit) {
         }
     }
  
-    for (int i = 1; i <= upperLimit; i++) {
+    for (int i = 2; i <= upperLimit; i++) {
         if (!PrimeBools[i]) {
             primelist.push_back(i);
         }
