@@ -58,24 +58,6 @@ void ESieve(vector<int>& primelist, int upperLimit) {
     delete [] PrimeBools;
 }
 
-//bool isAbun(int N) {
-//    int d = N;
-//    int sum = 0;
-//
-//    while (--d > 0) {
-//        if ((N % d) == 0) {
-//           sum += d;
-//        }
-//    }
-//
-//    if (sum <= N) {
-//        return false;
-//    }
-//    else {
-//        return true;
-//    }
-//}
-//
 void printToFile(vector<int>& V) {
     unsigned int i;
 
