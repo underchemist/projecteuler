@@ -13,5 +13,6 @@ Problems
 - Problem 30: Digit fifth powers [Completed] 
 - Problem 31: Coin sums [Completed]
 - Problem 32: Pandigital products [Completed]
-- Problem 33: Digit canceling fractions [In progress]
+- Problem 33: Digit canceling fractions [Completed]
+- Problem 34: Sum of factorial digits [Completed]
 - Problem 39: Integer right triangles [Completed]
