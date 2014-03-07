@@ -1,13 +1,16 @@
+/* basic implementation of sieve of Eratosthenes
+ * using example from http://www.mathblog.dk/
+ * will generate a vector of primes up to a 
+ * certain limit */
+
 #ifndef __ESIEVE_H__
 #define __ESIEVE_H__
 
 #include <cmath>
 #include <vector>
 
-using namespace std;
-
-void eSieve(vector<int>& primelist, int upperLimit) {
-    int upperSqrt = ((int)sqrt((double)upperLimit));
+void eSieve(std::vector<int>& primelist, int upperLimit) {
+    int upperSqrt = int(std::sqrt(double(upperLimit)));
  
     bool *PrimeBools = new bool[(int)upperLimit+1]();
     PrimeBools[0] = 0;
