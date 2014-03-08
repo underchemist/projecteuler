@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -O3 -c -g -Wall -Werror -std=c++11
+CFLAGS = -Ofast -c -g -Wall -Werror -std=c++11
 
 all: prob46
 
