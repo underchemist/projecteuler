@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Ofast -c -g -Wall -Werror -std=c++11
+CFLAGS = -Ofast -c -pg -Wall -std=c++11
 
 all: prob50
 
