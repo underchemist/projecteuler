@@ -12,25 +12,24 @@
 std::vector<int> genESieve(int upperLimit) {
     int upperSqrt = int(std::sqrt(double(upperLimit)));
     std::vector<int> primes;
- 
-    bool *PrimeBools = new bool[(int)upperLimit+1]();
-    PrimeBools[0] = 0;
-    PrimeBools[1] = 0;
+    std::vector<bool> primeBools(int(upperLimit+1));
+    // bool *PrimeBools = new bool[(int)upperLimit+1]();
+    primeBools[0] = 0;
+    primeBools[1] = 0;
 
     for (int i = 2; i <= upperSqrt; i++) {
-        if (!PrimeBools[i]) {
+        if (!primeBools[i]) {
             for (int j = i * i; j <= upperLimit; j += i) {
-                PrimeBools[j] = 1;
+                primeBools[j] = 1;
             }
         }
     }
  
     for (int i = 2; i <= upperLimit; i++) {
-        if (!PrimeBools[i]) {
+        if (!primeBools[i]) {
             primes.push_back(i);
         }
     }
-    delete [] PrimeBools;
     return primes;
 }
 
