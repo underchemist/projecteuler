@@ -1,7 +1,10 @@
 /* basic implementation of sieve of Eratosthenes
  * using example from http://www.mathblog.dk/
  * will generate a vector of primes up to a 
- * certain limit */
+ * certain limit. Pretty fast runtime for generating
+ * the first million primes, gets slower after that.
+ * Could use some more optimization but not necessary
+ * for right now.*/
 
 #ifndef __ESIEVE_H__
 #define __ESIEVE_H__
