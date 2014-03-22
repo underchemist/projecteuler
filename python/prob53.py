@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.3
 
 from math import factorial, ceil
 
@@ -12,8 +12,8 @@ if __name__ == '__main__':
         subLimit = int(ceil(n/2))
         for r in range(1, subLimit):
             if choose(n, r) >= upperLimit:
-                count += (subLimit - r)*2+1
+                count += (subLimit - r)*2
                 if n % 2:
                     count += 1
                 break
-    print "there are ", count, "values of nCr above 1000000"
+    print("there are ", count, "values of nCr above 1000000")

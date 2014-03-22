@@ -1,10 +1,10 @@
-/* basic implementation of sieve of Eratosthenes
- * using example from http://www.mathblog.dk/
- * will generate a vector of primes up to a 
- * certain limit. Pretty fast runtime for generating
- * the first million primes, gets slower after that.
- * Could use some more optimization but not necessary
- * for right now.*/
+/**
+ * Basic implementation of sieve of Eratoshthenes using example from
+ * http://www.mathblog.dk/. Will genereate a vector of primes up to a certain
+ * value. Pretty fast runtime for all primes < one million, gets slower (> 1 s
+ * execution time) after that. Couse use some more optimization but not
+ * necessary for right now.
+ */
 
 #ifndef __ESIEVE_H__
 #define __ESIEVE_H__
@@ -27,7 +27,7 @@ std::vector<int> genESieve(int upperLimit) {
             }
         }
     }
- 
+
     for (int i = 2; i <= upperLimit; i++) {
         if (!primeBools[i]) {
             primes.push_back(i);
