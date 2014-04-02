@@ -1,0 +1,13 @@
+side length is 26241
+         52484 function calls in 3.513 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.034    0.034    3.513    3.513 prob58.py:4(<module>)
+    52480    3.479    0.000    3.479    0.000 prob58.py:4(prime)
+        1    0.000    0.000    3.513    3.513 {built-in method exec}
+        1    0.000    0.000    0.000    0.000 {built-in method print}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
