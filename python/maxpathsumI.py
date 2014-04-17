@@ -9,7 +9,7 @@ import os
 import numpy as np
 import time
 
-f = open(os.path.expanduser("~/Dropbox/Python/Scripts/projecteuler.net/maxpathsumIdata.txt"), "r")
+f = open(os.path.expanduser("~/Dropbox/Code/projecteuler/python/maxpathsumIdata.txt"), "r")
 t = np.genfromtxt(f, dtype="int")
 f.close()
 
