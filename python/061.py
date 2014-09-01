@@ -29,5 +29,37 @@ which each polygonal type: triangle, square, pentagonal, hexagonal,
 heptagonal, and octagonal, is represented by a different number in the
 set.
 """
+def triangle(n):
+    """docstring for triangle"""
+    return int((n*(n+1))/2)
+
+def square(n):
+    return int(n*n)
+
+def pentagonal(n):
+    """docstring for pentagonal"""
+    return int((n*(3*n-1))/2)
+
+def hexagonal(n):
+    """docstring for hexagonal"""
+    return int((n*(2*n-1)))
+
+def heptagonal(n):
+    """docstring for heptagonal"""
+    return int((n*(5*n-3))/2)
+
+def octagonal(n):
+    """docstring for octagonal"""
+    return int((n*(3*n-2)))
+
+
+if __name__=='__main__':
+    MAX_LIMIT = 1000
+    Tri = [triangle(n) for n in range(MAX_LIMIT) if triangle(n) < 9999 and triangle(n) > 100]
+    Squ = [square(n) for n in range(MAX_LIMIT) if square(n) < 9999 and square(n) > 100]
+    Pen = [pentagonal(n) for n in range(MAX_LIMIT) if pentagonal(n) < 9999 and pentagonal(n) > 100]
+    Hex = [hexagonal(n) for n in range(MAX_LIMIT) if hexagonal(n) < 9999 and hexagonal(n) > 100]
+    Hep = [heptagonal(n) for n in range(MAX_LIMIT) if heptagonal(n) < 9999 and heptagonal(n) > 100]
+    Oct = [octagonal(n) for n in range(MAX_LIMIT) if octagonal(n) < 9999 and octagonal(n) > 100]
 
 
