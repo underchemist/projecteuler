@@ -3,11 +3,9 @@ A simple implementation of the Sieve of Eratosthenes in python. Should return
 an array based on a predefined upper limit.
 """
 
-from numpy import sqrt
-
 
 def gen_primes(upperLimit):
-    upperSqrt = int(sqrt(upperLimit)) + 1
+    upperSqrt = int((upperLimit)**0.5) + 1
     primes = []
     primeBools = [True] * (upperLimit + 1)
     primeBools[0] = False

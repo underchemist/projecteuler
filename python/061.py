@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.4
 """
 Project Euler Problem 61
 ========================
@@ -29,37 +30,39 @@ which each polygonal type: triangle, square, pentagonal, hexagonal,
 heptagonal, and octagonal, is represented by a different number in the
 set.
 """
-def triangle(n):
-    """docstring for triangle"""
-    return int((n*(n+1))/2)
+def triangle(n): return int((n*(n+1))/2)
 
-def square(n):
-    return int(n*n)
+def square(n): return int(n*n)
 
-def pentagonal(n):
-    """docstring for pentagonal"""
-    return int((n*(3*n-1))/2)
+def pentagonal(n): return int((n*(3*n-1))/2)
 
-def hexagonal(n):
-    """docstring for hexagonal"""
-    return int((n*(2*n-1)))
+def hexagonal(n): return int((n*(2*n-1)))
 
-def heptagonal(n):
-    """docstring for heptagonal"""
-    return int((n*(5*n-3))/2)
+def heptagonal(n): return int((n*(5*n-3))/2)
 
-def octagonal(n):
-    """docstring for octagonal"""
-    return int((n*(3*n-2)))
+def octagonal(n): return int((n*(3*n-2)))
 
+def is_cycle(a, b): return str(a)[-2:] == str(b)[:2]
+
+figurates = {
+    3: filter(lambda n: n < 10000 and n >= 1000, map(triangle, range(1000))),
+    4: filter(lambda n: n < 10000 and n >= 1000, map(square, range(1000))),
+    5: filter(lambda n: n < 10000 and n >= 1000, map(pentagonal, range(1000))),
+    6: filter(lambda n: n < 10000 and n >= 1000, map(hexagonal, range(1000))),
+    7: filter(lambda n: n < 10000 and n >= 1000, map(heptagonal, range(1000))),
+    8: filter(lambda n: n < 10000 and n >= 1000, map(octagonal, range(1000)))
+}
 
 if __name__=='__main__':
-    MAX_LIMIT = 1000
-    Tri = [triangle(n) for n in range(MAX_LIMIT) if triangle(n) < 9999 and triangle(n) > 100]
-    Squ = [square(n) for n in range(MAX_LIMIT) if square(n) < 9999 and square(n) > 100]
-    Pen = [pentagonal(n) for n in range(MAX_LIMIT) if pentagonal(n) < 9999 and pentagonal(n) > 100]
-    Hex = [hexagonal(n) for n in range(MAX_LIMIT) if hexagonal(n) < 9999 and hexagonal(n) > 100]
-    Hep = [heptagonal(n) for n in range(MAX_LIMIT) if heptagonal(n) < 9999 and heptagonal(n) > 100]
-    Oct = [octagonal(n) for n in range(MAX_LIMIT) if octagonal(n) < 9999 and octagonal(n) > 100]
+    # generate all polygonal numbers
+    numbers = [(key, value) for key in figurates.keys() for value in figurates[key]]
 
-
+    for k1, v1 in numbers:
+        for k2, v2 in [(k, v) for k, v in numbers if k not in [k1] and is_cycle(v1, v)]:
+            for k3, v3 in [(k, v) for k, v in numbers if k not in [k1, k2] and is_cycle(v2, v)]:
+                for k4, v4 in [(k, v) for k, v in numbers if not k in [k1, k2, k3] and is_cycle(v3, v)]:
+                    for k5, v5 in [(k, v) for k, v in numbers if not k in [k1, k2, k3, k4] and is_cycle(v4, v)]:
+                        for k6, v6 in [(k, v) for k, v in numbers if not k in [k1, k2, k3, k4, k5] and is_cycle(v5, v)]:
+                            if is_cycle(v6, v1):
+                                print(sum([v1, v2, v3, v4, v5, v6]))
+                                

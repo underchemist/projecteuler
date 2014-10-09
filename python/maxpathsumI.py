@@ -1,22 +1,29 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 """
 Created on Tue May 14 23:22:06 2013
 
 @author: ysebastien
 """
 
-import os
-import numpy as np
-import time
 
-f = open(os.path.expanduser("~/Dropbox/Code/projecteuler/python/maxpathsumIdata.txt"), "r")
-t = np.genfromtxt(f, dtype="int")
-f.close()
+def recSumAtRow(rowData, rowNum):
+    # iterate over the given row
+    for i in range(len(rowData[rowNum])):
+        # add the largest of the values below-left or below-right
+        rowData[rowNum][i] += max([rowData[rowNum+1][i], rowData[rowNum+1][i+1]])
+    # base case
+    if len(rowData[rowNum]) == 1:
+        return rowData[rowNum][0]
+    # recursive case
+    else:
+        return recSumAtRow(rowData, rowNum-1)
 
-start = time.time()
 
-for i,j in [(k,l) for k in range(len(t)-2,-1,-1) for l in range(k+1)]:
-    t[(i,j)] += max(t[(i+1,j)], t[(i+1,j+1)])
+t = []
+with open('triangle.txt') as f:
+    for line in f:
+        t.append([int(i) for i in line.rstrip('\n').split(" ")])
 
-print t[(0,0)]
-print "solution found in", time.time() - start, "s"
+result = recSumAtRow(t, len(t)-2)  # start at second to last row
+
+print(result)
