@@ -3,6 +3,7 @@ import numpy as np
 from itertools import permutations
 
 primes = gen_primes(int(1e7))
+not_primes = np.setdiff1d(np.arange(2, int(1e3), 1), primes)
 
 def eul_tot_fun(n):
     """
@@ -12,9 +13,11 @@ def eul_tot_fun(n):
     """
     # find prime divisors
     pd = []
+    lim = np.sqrt(n)
     for i in range(n//2):
         if n % primes[i] == 0:
             pd.append(primes[i])
+
     prime_divisors = np.array(pd)
 
     return int(n * (1-1/prime_divisors).prod())
@@ -33,16 +36,16 @@ def is_perm(n, m):
 
     return False
 
-
-
 def main():
     res = []
-    for n in range(2, int(1e3)):
+    for n in not_primes:
         m = eul_tot_fun(n)
         if is_perm(n, m):
             res.append([n, n/m])
             print(n, n/m)
-    print(np.array(res)[:, 1].min())
+    res = np.array(res)
+    print(res[res[:, 1].argmin(), 0], res[:, 1].min())
+
 
 if __name__ == '__main__':
     main()
