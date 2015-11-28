@@ -6,12 +6,12 @@ from collections import defaultdict
 # primes = gen_primes(int(1e7))
 # not_primes = np.setdiff1d(np.arange(2, int(1e4), 1), primes)
 
-def gen_primes_factors(upperLimit):
+def gen_prime_factors(upperLimit):
     """
     modifying general sieve to count crossed off numbers as having the
     prime as  factor.
     """
-    upperSqrt = int((upperLimit)**0.5) + 1
+    upperSqrt = int((upperLimit)**0.5)
     primes = []
     factors = [[] for x in range(upperLimit)]
     primeBools = [True] * (upperLimit + 1)
@@ -120,7 +120,7 @@ def main2():
     print(res[res[:, 1].argmin(), 0], res[:, 1].min())
 
 def main3():
-    pfactors = gen_primes_factors(int(1e7))
+    pfactors = gen_prime_factors(int(1e5))
     eultot = []
     res = []
 
@@ -134,6 +134,7 @@ def main3():
         if sorted(str(n)) == sorted(str(m)):
             res.append([n, m, n/m])
     res = np.array(res)
+    print(res)
     print(res[res[:, 2].argmin(), 0], res[res[:, 2].argmin(), 1], res[:, 2].min())
 
 if __name__ == '__main__':
