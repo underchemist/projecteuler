@@ -1,13 +1,19 @@
 from esieve3 import gen_primes
 import numpy as np
 from itertools import permutations
+from collections import defaultdict
 
-primes = gen_primes(int(1e7))
-not_primes = np.setdiff1d(np.arange(2, int(1e4), 1), primes)
+# primes = gen_primes(int(1e7))
+# not_primes = np.setdiff1d(np.arange(2, int(1e4), 1), primes)
 
-def gen_primes(upperLimit):
+def gen_primes_factors(upperLimit):
+    """
+    modifying general sieve to count crossed off numbers as having the
+    prime as  factor.
+    """
     upperSqrt = int((upperLimit)**0.5) + 1
     primes = []
+    factors = [[] for x in range(upperLimit)]
     primeBools = [True] * (upperLimit + 1)
     primeBools[0] = False
     primeBools[1] = False
@@ -17,12 +23,16 @@ def gen_primes(upperLimit):
             primes.append(i)
             for j in range(i * i, upperLimit, i):
                 primeBools[j] = False
+            for j in range(2 * i, upperLimit, i):
+                factors[j].append(i)
 
     for k in range(upperSqrt, upperLimit):
         if primeBools[k]:
+            for j in range(2 * k, upperLimit, k):
+                factors[j].append(k)
             primes.append(k)
 
-    return primes
+    return factors
 
 def pfactors(n):
     """
@@ -109,6 +119,22 @@ def main2():
     res = np.array(res)
     print(res[res[:, 1].argmin(), 0], res[:, 1].min())
 
+def main3():
+    pfactors = gen_primes_factors(int(1e7))
+    eultot = []
+    res = []
+
+    for n, pf in enumerate(pfactors):
+        if pf == []:
+            continue
+        prime_divisors = np.array(pf)
+        eultot.append([n, int(n * (1-1/prime_divisors).prod())])
+    eultot = np.array(eultot)
+    for n, m in eultot:
+        if sorted(str(n)) == sorted(str(m)):
+            res.append([n, m, n/m])
+    res = np.array(res)
+    print(res[res[:, 2].argmin(), 0], res[res[:, 2].argmin(), 1], res[:, 2].min())
 
 if __name__ == '__main__':
     pass
